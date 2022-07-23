@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react"
 import { useDispatch, useSelector } from "react-redux"
+import axios from 'axios';
 import { table, idMesa } from "../redux/actions"
 import { Link,Navigate } from "react-router-dom"
 
@@ -27,14 +28,10 @@ export default function Table({connect}){
         e.preventDefault()
         try {
            
-            const response = await fetch('http://localhost:5001/login', {
-                method: "POST",
-                headers: {"Content-Type": "application/json"},
-                body: JSON.stringify({
-                    "name":name
-                }) 
-            });
-            const parseRes = await response.json();
+            const response = await axios.post('/login', {
+                "name":name
+                }) ;
+            const parseRes = await response.data;
             console.log(parseRes)
             if(parseRes === true){
                 connect(true)

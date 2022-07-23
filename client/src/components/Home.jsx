@@ -1,6 +1,7 @@
 
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import axios from 'axios';
 //import  Cards  from "./Cards";
 import { useState } from "react";
 import Carnes from "./Table";
@@ -48,12 +49,13 @@ export default function Home(){
     async function entrar(){
         
         try {
-            const response = await fetch(`http://localhost:5001/login/open/${ID_Mesa}`, {
-                method: "GET",
+            
+            const response = await axios.get(`/login/open/${ID_Mesa}`, {
+                
                 headers: {"Content-Type": "application/json"},
                  
             });
-            const parseRes = await response.json();
+            const parseRes = await response.data;
             console.log(parseRes)
                
                 

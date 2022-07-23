@@ -9,7 +9,7 @@ export const ID_MESA = 'idMesa';
 
 export function getMenues(){
     return (dispatch)=>{
-        axios.get('http://localhost:5001/menues')
+        axios.get('/menues')
         .then(r=>{
             return dispatch({
                 type:getAllMenues,
